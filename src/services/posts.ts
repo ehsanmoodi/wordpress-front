@@ -19,3 +19,18 @@ export const postsQueryOptions = (page: number) =>
     queryKey: ["posts", page],
     queryFn: () => fetchPosts({ page }),
   });
+
+const fetchPost = async ({ id }: { id: string }) => {
+  const { data } = await axios.get(
+    import.meta.env.VITE_API_BASE + `posts/${id}`,
+    { params: { _embed: true } },
+  );
+
+  return data;
+};
+
+export const postQueryOptions = (id: string) =>
+  queryOptions({
+    queryKey: ["posts", { id }],
+    queryFn: () => fetchPost({ id }),
+  });

@@ -21,8 +21,9 @@ function RootComponent() {
         <Link
           to="/"
           activeProps={{
-            className: "font-bold",
+            className: "",
           }}
+          className="font-bold"
           activeOptions={{ exact: true }}
         >
           Wordpress Frontend
